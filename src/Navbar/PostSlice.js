@@ -13,12 +13,25 @@ reducers: {
     postAdded(state,action){
 
         state.push(action.payload)
+    },
+
+    postUpdate(state,action){
+        
+        const {id,title,content} = action.payload;
+        const existingPost = state.find((post) =>
+        post.id === id)
+        if(existingPost){
+            existingPost.content = content;
+            existingPost.title = title;
+
+        }
+
     }
+},
 
-}
+});
 
-}) 
-
-export const { postAdded } = postSlice.actions;
+export const { postAdded, postUpdate } = postSlice.actions;
 
 export default postSlice.reducer;
+

@@ -8,6 +8,8 @@ import store from './Redux/Store.js'
 import { Provider } from'react-redux'
 import Navbar from './Navbar/Navbar.jsx'
 import Post from './Navbar/Post.jsx'
+import SinglePostPage from './Components/SinglePostPage.jsx'
+import EditPostForm from './Components/EditPostForm.jsx'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -19,6 +21,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/home" element={<Home/>} />
         <Route path="/navbar" element={<Navbar/>} />
         <Route path="/post" element={<Post/>} />
+        <Route path="/posts/:postId" element={<SinglePostPage/>} />
+        <Route path="/editpost/:postId" element={<EditPostForm/>} />
       </Routes>
     </BrowserRouter>
     
