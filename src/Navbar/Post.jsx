@@ -46,8 +46,8 @@ const Post = () => {
       setTitle("")
       setContent("")
       Swal.fire({
-        title: "Sent!",
-        text: "Message sent successfully!",
+        title: "Posted!",
+        text: "Posted successfully!",
         icon: "success"
       });
     }

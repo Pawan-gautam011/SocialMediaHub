@@ -33,8 +33,8 @@ const EditPostForm = () => {
       setTitle("")
       setContent("")
       Swal.fire({
-        title: "Sent!",
-        text: "Message sent successfully!",
+        title: "Edited!",
+        text: "Edited successfully!",
         icon: "success"
       });
     }
