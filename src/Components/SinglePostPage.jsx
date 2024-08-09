@@ -20,10 +20,10 @@ const SinglePostPage = () => {
         <div className='border border-gray-400 rounded-md p-4 shadow-sm'>
         <h1 className='text-2xl font-bold mb-4'>{post.title}</h1>
         <p className='text-gray-700 mb-4'>{post.content}</p>
-        <Link to='/' className=' bg-blue-800 hover:bg-blue-600 text-white p-2 rounded w-full'>
+        <Link to='/' className=' bg-blue-800 hover:bg-blue-600 text-white p-2 rounded w-24'>
                     Back
                 </Link>
-        <Link to={`/editpost/${post.id}`} className='m-10    bg-blue-800 hover:bg-blue-600 text-white p-2 rounded w-full'>
+        <Link to={`/editpost/${post.id}`}  className='m-10    bg-blue-800 hover:bg-blue-600 text-white p-2 rounded w-full'>
                     Edit Post
                 </Link>
         

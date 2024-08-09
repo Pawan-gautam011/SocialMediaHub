@@ -17,7 +17,7 @@ const Home = () => {
               <Link to={`/posts/${post.id}`} className='inline-block p-3 text-white rounded-md bg-blue-800 hover:bg-blue-600'>View Post</Link>
             </div>
             <div className='m-4 '>
-              <Link to={`/posts/${post.id}`} className='inline-block p-3 text-white rounded-md bg-blue-800 hover:bg-blue-600'>Edit Post</Link>
+              <Link to={`/editpost/${post.id}`} className='inline-block p-3 text-white rounded-md bg-blue-800 hover:bg-blue-600'>Edit Post</Link>
             </div>
             </div>
           </article>
