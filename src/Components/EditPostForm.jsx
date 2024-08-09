@@ -11,6 +11,18 @@ const EditPostForm = () => {
     const post = posts.find((post) => post.id === postId);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const [userId, setUserId] = useState(post.user);
+    const users = useSelector((state) => state.users);
+
+    const userOptions = users.map((user) => (
+        <option key= {user.id} value={user.id} className="text-black">{user.name}</option>
+    ));
+
+    const user = users.find((user) => user.id === userId)
+
+    const onAuthorChanged = (e) => {
+        setUserId(e.target.value);
+    };
 
     // Initialize state with the post's current title and content
     const [title, setTitle] = useState('');
@@ -32,7 +44,7 @@ const EditPostForm = () => {
                 id: postId,
                 title,
                 content,
-                createdAt: new Date().toISOString(),
+                user: userId
             }));
             navigate(`/posts/${postId}`);
             Swal.fire({
@@ -63,6 +75,20 @@ const EditPostForm = () => {
                                 className='w-full p-3 border text-black border-gray-300 rounded-md bg-white bg-opacity-70 focus:outline-none focus:ring-2 focus:ring-blue-500'
                             />
                         </div>
+                        <div className='p-2'>
+                                <label htmlFor="postAuthor" className="  text-lg font-medium">Author:</label>
+                                <select
+                                    name="postAuthor"
+                                    id="postAuthor"
+                                    value={userId}
+                                    onChange={onAuthorChanged}
+                                    className="w-full p-3 border text-black border-gray-300 rounded-md bg-white bg-opacity-70 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                >
+                                    <option value={user.id} className="text-gray-500">{user.name}</option>
+                                    {userOptions}
+                                </select>
+                            </div>
+
                         <div>
                             <label htmlFor='postContent' className='block mb-2 text-lg font-medium'>Post Content</label>
                             <textarea

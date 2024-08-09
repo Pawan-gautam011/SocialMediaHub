@@ -1,14 +1,24 @@
 import { useState, useEffect } from 'react';
 import Navbar from './Navbar';
 import Swal from 'sweetalert2';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { postAdded } from './PostSlice';
 import { nanoid } from '@reduxjs/toolkit';
 
 const Post = () => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
+    const [userId, setUserId] = useState("");
     const dispatch = useDispatch();
+    const users = useSelector((state) => state.users);
+
+    const userOptions = users.map((user) => (
+        <option key={user.id} value={user.id} className="text-black">{user.name}</option>
+    ));
+
+    const onAuthorChanged = (e) => {
+        setUserId(e.target.value);
+    };
 
     useEffect(() => {
         const savedTitle = localStorage.getItem('postTitle');
@@ -29,7 +39,7 @@ const Post = () => {
                 id: nanoid(),
                 title,
                 content,
-                createdAt: new Date().toISOString(),
+                user: userId
             };
 
             // Dispatch the action to add the post to Redux
@@ -41,6 +51,7 @@ const Post = () => {
             // Clear the input fields
             setTitle("");
             setContent("");
+            setUserId("");
 
             // Show a success message
             Swal.fire({
@@ -56,7 +67,7 @@ const Post = () => {
     return (
         <>
             <Navbar />
-            <h1 className='text-center lg:text-2xl font-bold m-10'>Create Your Post</h1>
+            <h1 className='text-center lg:text-2xl font-bold m-5'>Create Your Post</h1>
             <div className=''>
                 <div className='flex justify-center'>
                     <div className='relative bg-white bg-opacity-30 backdrop-blur-md border border-gray-300 shadow-lg rounded-lg p-5 w-full max-w-lg'>
@@ -73,6 +84,19 @@ const Post = () => {
                                     required
                                     className='w-full p-3 border text-black border-gray-300 rounded-md bg-white bg-opacity-70 focus:outline-none focus:ring-2 focus:ring-blue-500'
                                 />
+                            </div>
+                            <div className='p-2'>
+                                <label htmlFor="postAuthor" className="  text-lg font-medium">Author:</label>
+                                <select
+                                    name="postAuthor"
+                                    id="postAuthor"
+                                    value={userId}
+                                    onChange={onAuthorChanged}
+                                    className="w-full p-3 border text-black border-gray-300 rounded-md bg-white bg-opacity-70 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                >
+                                    <option value="" className="text-gray-500">Select an author</option>
+                                    {userOptions}
+                                </select>
                             </div>
                             <div>
                                 <label htmlFor='postContent' className='block mb-2 text-lg font-medium'>Post Content</label>
