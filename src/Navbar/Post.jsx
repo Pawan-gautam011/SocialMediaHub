@@ -42,19 +42,14 @@ const Post = () => {
                 user: userId,
                 date: new Date().toISOString(),
             };
-
-            // Dispatch the action to add the post to Redux
             dispatch(postAdded(newPost));
 
-            // Save the new post in localStorage
             localStorage.setItem('post', JSON.stringify(newPost));
 
-            // Clear the input fields
             setTitle("");
             setContent("");
             setUserId("");
 
-            // Show a success message
             Swal.fire({
                 title: "Posted!",
                 text: "Posted successfully!",

@@ -44,7 +44,8 @@ const EditPostForm = () => {
                 id: postId,
                 title,
                 content,
-                user: userId
+                user: userId,
+                date: new Date().toISOString()
             }));
             navigate(`/posts/${postId}`);
             Swal.fire({
