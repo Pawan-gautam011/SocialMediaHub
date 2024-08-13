@@ -24,11 +24,11 @@ const EditPostForm = () => {
         setUserId(e.target.value);
     };
 
-    // Initialize state with the post's current title and content
+
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
 
-    // Set title and content once the component mounts and post is available
+
     useEffect(() => {
         if (post) {
             setTitle(post.title);
@@ -110,7 +110,9 @@ const EditPostForm = () => {
                     </form>
                 </div>
             </div>
+    
         </div>
+        
     );
 }
 

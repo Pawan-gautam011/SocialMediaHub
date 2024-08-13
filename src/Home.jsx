@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PostAuthor from './Components/PostAuthor';
+import TimeAgo from './Components/TimeAgo';
 
 const Home = () => {
   const posts = useSelector((state) => state.posts);
@@ -15,6 +16,8 @@ const Home = () => {
             <p className="text-sm sm:text-base text-gray-900 font-bold">Title: {post.title}</p>
             <p className="text-sm sm:text-base text-gray-500 font-bold">Content: {post.content}</p>
             <PostAuthor userId = {post.user} />
+
+            <TimeAgo timestamp={post.date} />
 
             <div className='flex'>
             <div className='m-4 '>

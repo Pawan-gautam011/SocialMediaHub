@@ -39,7 +39,8 @@ const Post = () => {
                 id: nanoid(),
                 title,
                 content,
-                user: userId
+                user: userId,
+                date: new Date().toISOString(),
             };
 
             // Dispatch the action to add the post to Redux
