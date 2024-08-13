@@ -26,7 +26,7 @@ const Reaction = ({ post }) => {
                 <button
                     key={key}
                     type="button"
-                    className="flex items-center justify-center w-20 h-12 bg-gray-100 hover:bg-blue-100 text-xl rounded-full shadow-md transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50"
+                    className="flex items-center justify-center w-16 h-12 bg-gray-100 hover:bg-blue-100 text-xl rounded-full shadow-md transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50"
                     onClick={() => onReactionClick(key)}
                 >
                     <span className="mr-2">{value}</span>

@@ -4,6 +4,7 @@ import { useParams, Link } from 'react-router-dom'
 import PostAuthor from './PostAuthor';
 import TimeAgo from './TimeAgo';
 import Navbar from '../Navbar/Navbar';
+import Reaction from './Reaction';
 
 const SinglePostPage = () => {
     const {postId} = useParams();
@@ -28,6 +29,7 @@ const SinglePostPage = () => {
         <PostAuthor userId = {post.user} />
         <TimeAgo timestamp={post.date}/>
         <p className='text-gray-700 mb-4'>{post.content}</p>
+        <Reaction post={post}/>
         <div className="flex justify-center space-x-4 mt-4">
           <Link to="/" className="w-28 text-center bg-blue-800 hover:bg-blue-600 text-white font-semibold py-2 rounded shadow-md transition duration-300 ease-in-out">
             Back
