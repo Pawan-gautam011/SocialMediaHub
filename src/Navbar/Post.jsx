@@ -41,6 +41,15 @@ const Post = () => {
                 content,
                 user: userId,
                 date: new Date().toISOString(),
+                reactions:{
+                    like: 0,
+                    dislike: 0,
+                    love: 0,
+                    haha: 0,
+                    wow: 0,
+                    sad: 0,
+                    angry:0
+                },
             };
             dispatch(postAdded(newPost));
 
