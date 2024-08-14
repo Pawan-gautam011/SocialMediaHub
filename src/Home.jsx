@@ -45,8 +45,8 @@ const Home = () => {
             <PostAuthor userId={post.user} />
             <TimeAgo timestamp={post.date} />
             <Reaction post={post} />
-            <div className='flex flex-wrap sm:flex-row mt-6 items-center'>
-              <div className='m-2 sm:m-4'>
+            <div className='flex flex-wrap sm:flex-row mt-6 items-center  '>
+              <div className='mx-auto sm:m-4'>
                 <Link to={`/posts/${post.id}`} className='inline-block p-3 text-white rounded-md bg-blue-800 hover:bg-blue-600 text-center'>
                   View Post
                 </Link>
@@ -57,7 +57,7 @@ const Home = () => {
                 </Link>
               </div>
               <div className='m-2 sm:m-4'>
-                <MdDelete className='h-8 w-8 sm:h-10 sm:w-10 cursor-pointer text-red hover:text-red-600 mx-[87px] sm:mx-0' onClick={() => handleDelete(post.id)} />
+                <MdDelete className='h-10 w-8 sm:h-10 sm:w-10 cursor-pointer text-red hover:text-red-600 mx-[117px] sm:mx-0' onClick={() => handleDelete(post.id)} />
               </div>
             </div>
           </article>
