@@ -15,8 +15,8 @@ const loadState = () => {
 }
 
 const initialState = loadState() || [
-    { id: "1", title: "Default Post", content: "Hello, this is my first post!", user: "1", date: sub(new Date(), { minutes: 10 }).toISOString(), reactions: { like: 0, dislike: 0, love: 0, haha: 0, wow: 0, sad: 0, angry: 0 }, },
-    { id: "2", title: "Default Post", content: "I'm enjoying this new social media app!", user: "2", date: sub(new Date(), { minutes: 5 }).toISOString(), reactions: { like: 0, dislike: 0, love: 0, haha: 0, wow: 0, sad: 0, angry: 0 }, },
+    { id: "1", title: "Internship", content: "Is it really hard to find Internship?", user: "1", date: sub(new Date(), { minutes: 10 }).toISOString(), reactions: { like: 0, dislike: 0, love: 0, haha: 0, wow: 0, sad: 0, angry: 0 }, },
+    { id: "2", title: "Test Post", content: "I'm enjoying this new social media app!", user: "2", date: sub(new Date(), { minutes: 5 }).toISOString(), reactions: { like: 0, dislike: 0, love: 0, haha: 0, wow: 0, sad: 0, angry: 0 }, },
 ];
 
 const postSlice = createSlice({

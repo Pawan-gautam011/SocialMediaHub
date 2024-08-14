@@ -57,7 +57,11 @@ const Home = () => {
                 </Link>
               </div>
               <div className='mx-auto sm:mx-4'>
-                <MdDelete className='h-8 w-8 sm:h-10 sm:w-10 cursor-pointer text-red hover:text-red-600 mx-auto sm:mx-0' onClick={() => handleDelete(post.id)} />
+              <MdDelete
+  className="h-8 w-8 sm:h-10 sm:w-10 cursor-pointer text-red hover:text-red-600 mx-auto sm:mx-0 transform transition-transform duration-300 ease-in-out hover:scale-105 hover:rotate-6"
+  onClick={() => handleDelete(post.id)}
+/>
+
               </div>
             </div>
           </article>
