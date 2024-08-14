@@ -21,7 +21,7 @@ const Reaction = ({ post }) => {
     }
 
     return (
-        <div className="flex flex-wrap justify-center sm:justify-start space-x-2 space-y-2 sm:space-y-0 mt-4">
+        <div className="flex flex-wrap justify-center sm:justify-start space-x-2 space-y-2 sm:space-y-0 mt-4 mx-11 ">
             {Object.entries(reactionEmojis).map(([key, value]) => (
                 <button
                     key={key}

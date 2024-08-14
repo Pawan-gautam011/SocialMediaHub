@@ -1,9 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { sub } from 'date-fns';
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+
+const loadState = () =>{
+    try{
+        const postData = localStorage.getItem('posts');
+        return postData ? JSON.parse(postData) : undefined;
+    }catch(e){
+        console.log("Error loading", e);
+        return undefined;
+    }
+}
 
 
-const initialState = [
-    { id: "1", title: "First Post", content: "Hello, this is my first post!", user:"1",date:sub(new Date(),{minutes: 10}).toISOString(),
+const initialState = loadState() || [
+    { id: "1", title: "Default Post", content: "Hello, this is my first post!", user:"1",date:sub(new Date(),{minutes: 10}).toISOString(),
     reactions:{
         like: 0,
         dislike: 0,
@@ -13,7 +25,7 @@ const initialState = [
         sad: 0,
         angry:0
     },},
-    {id: "2", title: "Second Post", content: "I'm enjoying this new social media app!",user:"2",date:sub(new Date(),{minutes: 5}).toISOString(),
+    {id: "2", title: "Default Post", content: "I'm enjoying this new social media app!",user:"2",date:sub(new Date(),{minutes: 5}).toISOString(),
     reactions:{
         like: 0,
         dislike: 0,
@@ -65,3 +77,18 @@ export const { postAdded, postUpdate,reactionAdded } = postSlice.actions;
 
 export default postSlice.reducer;
 
+
+export const useSaveState = () =>{
+    const posts = useSelector((state) => state.posts)
+
+    useEffect(() => {
+        try{
+            const postData = JSON.stringify(posts);
+            localStorage.setItem('posts',postData);
+
+        }catch(e){
+            console.log("Could not save state to LocalStorage",e)
+        }
+    },[posts])
+
+}

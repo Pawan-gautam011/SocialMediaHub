@@ -14,7 +14,7 @@ const TimeAgo = ({timestamp}) => {
   return (
 
     <>
-    <span className='timestamp'>
+    <span className='timestamp text-[#F7F7F8]'>
        <i>{timeAgo}</i>
     </span>
 

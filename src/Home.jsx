@@ -10,13 +10,13 @@ const Home = () => {
   const orderedPosts = posts.slice().sort((a, b) => b.date.localeCompare(a.date));
   return (
     <>
-      <section className="max-w-2xl m-auto  p-4">
-        <h2 className="text-2xl font-semibold mb-4 text-center">Posts</h2>
+      <section className="max-w-2xl m-auto  p-4  ">
+        <h2 className="text-2xl sm:text-4xl font-semibold mb-4 text-center text-[#F7F7F8]">Posts</h2>
         {orderedPosts.map((post) => (
-          <article key={post.id} className="border border-gray-300 rounded-lg p-4 mb-10 mt-10 shadow-sm">
+          <article key={post.id} className="border border-gray-300 rounded-lg p-4 mb-10 mt-10  backdrop-blur-md   bg-[#4E31AA] bg-white/10 border-white/20 shadow-[0_40px_30px_rgba(0,0,0,0.1)] ">
 
-            <p className="text-sm sm:text-base text-gray-900 font-bold">Title: {post.title}</p>
-            <p className="text-sm sm:text-base text-gray-500 font-bold mt-3">Content: {post.content}</p>
+            <p className="text-sm sm:text-base text-[#F7F7F8] font-bold">Title : {post.title}</p>
+            <p className="text-sm sm:text-base text-gray-300 font-bold mt-3">Content : {post.content}</p>
             <PostAuthor userId = {post.user} />
 
             <TimeAgo timestamp={post.date} />

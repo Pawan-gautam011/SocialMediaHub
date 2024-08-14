@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import Navbar from './Navbar';
 import Swal from 'sweetalert2';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,25 +13,14 @@ const Post = () => {
     const users = useSelector((state) => state.users);
 
     const userOptions = users.map((user) => (
-        <option key={user.id} value={user.id} className="text-black">{user.name}</option>
+        <option key={user.id} value={user.id} className="cursor-pointer">{user.name}</option>
     ));
 
     const onAuthorChanged = (e) => {
         setUserId(e.target.value);
     };
 
-    useEffect(() => {
-        const savedTitle = localStorage.getItem('postTitle');
-        const savedContent = localStorage.getItem('postContent');
-        if (savedTitle) {
-            console.log(`Loaded title from localStorage: ${savedTitle}`);
-            setTitle(savedTitle);
-        }
-        if (savedContent) {
-            console.log(`Loaded content from localStorage: ${savedContent}`);
-            setContent(savedContent);
-        }
-    }, []);
+ const canSave = Boolean(title) && Boolean(userId) && Boolean(content);
 
     const onSavePost = () => {
         if (title && content) {
@@ -53,7 +42,6 @@ const Post = () => {
             };
             dispatch(postAdded(newPost));
 
-            localStorage.setItem('post', JSON.stringify(newPost));
 
             setTitle("");
             setContent("");
@@ -72,13 +60,13 @@ const Post = () => {
     return (
         <>
             <Navbar />
-            <h1 className='text-center lg:text-2xl font-bold m-5'>Create Your Post</h1>
+            <h1 className='text-center text-xl sm:text-3xl font-bold m-2 text-[#F7F7F8]'>Create Your Post</h1>
             <div className=''>
                 <div className='flex justify-center'>
-                    <div className='relative bg-white bg-opacity-30 backdrop-blur-md border border-gray-300 shadow-lg rounded-lg p-5 w-full max-w-lg'>
+                    <div className='relative bg-[#4E31AA] bg-opacity-30 backdrop-blur-md border border-gray-300 shadow-lg rounded-lg p-5 w-full max-w-lg'>
                         <form className='flex flex-col space-y-5' onSubmit={(e) => { e.preventDefault(); onSavePost(); }}>
                             <div>
-                                <label htmlFor='postTitle' className='block mb-2 text-lg font-medium'>Post Title</label>
+                                <label htmlFor='postTitle' className='block mb-2 text-lg font-medium text-[#F7F7F8]'>Post Title</label>
                                 <input
                                     type='text'
                                     name='postTitle'
@@ -87,24 +75,24 @@ const Post = () => {
                                     value={title}
                                     onChange={(e) => setTitle(e.target.value)}
                                     required
-                                    className='w-full p-3 border text-black border-gray-300 rounded-md bg-white bg-opacity-70 focus:outline-none focus:ring-2 focus:ring-blue-500'
+                                    className='w-full p-3 border text-black border-gray-300 rounded-md bg-white bg-opacity-70 outline-none placeholder-black '
                                 />
                             </div>
                             <div className='p-2'>
-                                <label htmlFor="postAuthor" className="  text-lg font-medium">Author:</label>
+                                <label htmlFor="postAuthor" className="  text-lg font-medium text-[#F7F7F8] ">Author : </label>
                                 <select
                                     name="postAuthor"
                                     id="postAuthor"
                                     value={userId}
                                     onChange={onAuthorChanged}
-                                    className="w-full p-3 border text-black border-gray-300 rounded-md bg-white bg-opacity-70 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    className="w-full p-3 border text-black border-gray-300 rounded-md bg-white bg-opacity-70 outline-none cursor-pointer "
                                 >
-                                    <option value="" className="text-gray-500">Select an author</option>
+                                    <option value="" className="text-[#F7F7F8] cursor-pointer">Select an author</option>
                                     {userOptions}
                                 </select>
                             </div>
                             <div>
-                                <label htmlFor='postContent' className='block mb-2 text-lg font-medium'>Post Content</label>
+                                <label htmlFor='postContent' className='block mb-2 text-lg font-medium text-[#F7F7F8]'>Post Content</label>
                                 <textarea
                                     name='postContent'
                                     id='postContent'
@@ -112,12 +100,13 @@ const Post = () => {
                                     onChange={(e) => setContent(e.target.value)}
                                     placeholder='Your Message'
                                     required
-                                    className='w-full p-3 border text-black border-gray-300 rounded-md bg-white bg-opacity-70 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none'
+                                    className='w-full p-3 border text-black border-gray-300 rounded-md bg-white bg-opacity-70 outline-none  resize-none placeholder-black'
                                 ></textarea>
                             </div>
                             <button
                                 type='submit'
-                                className='w-full py-3 bg-green-600 text-white rounded-md hover:bg-green-500 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50'
+                                className='w-full py-3 bg-green-600 text-white rounded-md hover:bg-green-500 transition-all outline-none  focus:ring-opacity-50 cursor-pointer'
+                                disabled={!canSave}
                             >
                                 Save Post
                             </button>
