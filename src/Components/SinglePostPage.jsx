@@ -23,8 +23,8 @@ const SinglePostPage = () => {
     <div>
     <Navbar/>
     
-    <div className='max-w-2xl mx-auto mt-10 p-2 text-center '>
-        <div className='border border-gray-400 rounded-md p-4  text-[#F7F7F8] bg-[#4E31AA]  bg-white/10 border-white/20 shadow-[0_50px_30px_rgba(0,0,0,0.1)]'>
+    <div className='max-w-2xl mx-auto mt-10 p-2  '>
+        <div className='border border-gray-400 rounded-md p-4  text-[#F7F7F8] bg-[#4E31AA]  bg-white/10 border-white/20 shadow-[0_100px_30px_rgba(0, 0, 0, 0.1)]'>
         <h1 className='text-2xl font-bold mb-4 '>{post.title}</h1>
         <p className='text-gray-300 mb-4 font-semibold'>{post.content}</p>
         <PostAuthor userId = {post.user} />
